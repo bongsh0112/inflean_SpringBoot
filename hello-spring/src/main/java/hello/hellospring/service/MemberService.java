@@ -9,12 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service - SpringConfig에서 관리하기때문에 어노테이션 필요없음
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+    // setter를 통해 들어오기
+//    private MemberRepository memberRepository;
+//
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
 
-    @Autowired
+//     생성자를 통해 들어오기
+    private final MemberRepository memberRepository;
     public MemberService(MemberRepository memberRepository) { //직접 new로 생성하는게 아니라 외부에서 넣어주도록
         this.memberRepository = memberRepository;
     }
