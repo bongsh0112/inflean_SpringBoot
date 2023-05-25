@@ -17,7 +17,9 @@ public class MemberController {
 
     @Autowired //컨트롤러와 서비스를 연결
     public MemberController(MemberService memberService) {
+
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass()); // aop의 proxy 기술 확인
     }
 
     @GetMapping("/members/new")

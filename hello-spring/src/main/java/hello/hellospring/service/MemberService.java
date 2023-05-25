@@ -27,15 +27,6 @@ public class MemberService {
     }
 
     public Long join(Member member) {
-
-        // 회원가입시 비즈니스로직에 같은이름이 있는 회원은 안된다는걸 넣자
-
-//        Optional<Member> result = memberRepository.findByName(member.getName());
-//        //result.orElseGet() : 값이 있으면 get하고 없으면 get하지않기
-//        result.ifPresent(m -> { //null이 아니라 어떤 값이 있으면 동작하기. Optional이라 가능한부분.
-//            throw new IllegalStateException("이미 존재하는 회원입니다.");
-//        });
-
         validateDuplicateMember(member); // 중복 회원 검증
         memberRepository.save(member); // 검증 통과시 바로 저장
         return member.getId();
