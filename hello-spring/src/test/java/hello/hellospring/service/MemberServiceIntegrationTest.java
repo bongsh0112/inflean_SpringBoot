@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,6 +26,7 @@ class MemberServiceIntegrationTest {
     // afterEach가 필요했던 이유는 메모리의 데이터들을 지우기 위함이었는데 이제 db가 있으니까 필요없음
 
     @Test
+//    @Commit  // 이걸 하면 밑 코드의 내용과 맞게 디비에 저장이 됨. 위에 Transactional때문에 계속 롤백돼서 안들어갔지만 여기서 커밋으로 디비에 넣으면 저장되는거임!
     void 회원가입() {
         //given : 뭔가가 주어짐
         Member member = new Member();

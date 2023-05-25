@@ -1,10 +1,8 @@
 package hello.hellospring;
 
-import hello.hellospring.repository.JdbcMemberRepository;
-import hello.hellospring.repository.JdbcTemplateMemberRepository;
-import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +13,11 @@ import javax.xml.crypto.Data;
 @Configuration
 public class SpringConfig {
 
-    private final DataSource dataSource; // db와 연결할수있는 정보가 있는 데이터소스를 만들어줌
+    private EntityManager em;
 
     @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource; // 데이터소스를 DI해줌
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
 
     @Bean
@@ -33,6 +31,8 @@ public class SpringConfig {
 
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em); // 얘도 jpa이기 때문에 entitymanager필요 .. 
+
     }
 }
