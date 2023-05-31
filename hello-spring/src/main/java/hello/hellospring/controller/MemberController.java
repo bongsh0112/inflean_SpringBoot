@@ -42,7 +42,7 @@ public class MemberController {
     @GetMapping("/members")
     public String list(Model model) {
         List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members); //members전체를 model에다 담아서 화면으로 아예 넘김
+        model.addAttribute("members", members); // members전체를 model에다 담아서 화면으로 아예 넘김
 
         return "members/memberList";
     }
