@@ -20,6 +20,9 @@ public class MemberService {
 //        this.memberRepository = memberRepository;
 //    }
 
+    // 필드에서 주입하기
+//    @Autowired  private MemberRepository memberRepository;
+
 //     생성자를 통해 들어오기
     private final MemberRepository memberRepository;
     public MemberService(MemberRepository memberRepository) { //직접 new로 생성하는게 아니라 외부에서 넣어주도록
