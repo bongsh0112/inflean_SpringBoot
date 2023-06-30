@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component  // 만약 springconfig에 @Bean으로 TimeTracAop를 등록해놓았다면, @Component나 @Bean 둘중에 하나는 지워야한다
 public class TimeTraceAop {
 
-    @Around("execution(* hello.hellospring..*(..))")
+    @Around("execution(* hello.hellospring..*(..))") // 이 패키지 밑에 있는거에는 모두 적용
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
 
         long start = System.currentTimeMillis();

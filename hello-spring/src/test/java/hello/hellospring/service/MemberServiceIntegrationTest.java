@@ -30,7 +30,7 @@ class MemberServiceIntegrationTest {
     void 회원가입() {
         //given : 뭔가가 주어짐
         Member member = new Member();
-        member.setName("spring");
+        member.setName("spring100");
 
         //when : 실행시
         Long saveId = memberService.join(member);
@@ -49,7 +49,7 @@ class MemberServiceIntegrationTest {
         member1.setName("spring");
 
         Member member2 = new Member();
-        member2.setName("spring");
+        member2.setName("spring34");
 
         memberService.join(member1); // join시 계속 메모리 DB에 누적되기때문에 항상 클리어해줘야함.
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
